@@ -1,0 +1,46 @@
+<div class="tui-container tui-container_adaptive">
+
+    <div class="tui-row tui-row_adaptive">
+
+        <div class="tui-col_lg-4 tui-col_md-3 tui-col_sm-2"></div>
+
+        <div class="tui-col_lg-4 tui-col_md-6 tui-col_sm-8">
+
+            <h1>Login</h1>
+
+            <form [formGroup]="loginForm">
+
+                <tui-input class="b-form"
+                           formControlName="nameOrEmail"
+                           [tuiTextfieldCleaner]="true">
+                    Your Email or Username
+                </tui-input>
+
+                <tui-input-password class="tui-space_top-2"
+                                    formControlName="password"
+                                    [tuiTextfieldCleaner]="true">
+                    Your Password
+                </tui-input-password>
+
+            </form>
+
+            <tui-notification *ngIf="showSignInError" class="tui-space_top-4" status="error">
+                Either the username or the password is not correct. Please try again.
+            </tui-notification>
+
+            <button tuiButton
+                    type="button"
+                    class="tui-space_top-3 tui-space_right-3 tui-space_bottom-3"
+                    size="m"
+                    [disabled]="loginForm.invalid || isLoading"
+                    [showLoader]="isLoading"
+                    (click)="submit()">
+                Submit
+            </button>
+        </div>
+
+        <div class="tui-col_lg-4 tui-col_md-3 tui-col_sm-2"></div>
+
+    </div>
+
+</div>

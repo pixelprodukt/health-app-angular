@@ -18,6 +18,12 @@
     "@angular/platform-browser": "~12.0.4",
     "@angular/platform-browser-dynamic": "~12.0.4",
     "@angular/router": "~12.0.4",
+    "@taiga-ui/addon-charts": "^2.11.2",
+    "@taiga-ui/addon-table": "^2.11.2",
+    "@taiga-ui/cdk": "^2.11.2",
+    "@taiga-ui/core": "^2.11.2",
+    "@taiga-ui/icons": "^2.11.2",
+    "@taiga-ui/kit": "^2.11.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"

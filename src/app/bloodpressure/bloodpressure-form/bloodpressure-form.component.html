@@ -1,0 +1,55 @@
+<form class="input-wrapper"
+      [formGroup]="bloodpressureForm">
+
+    <div tuiGroup
+         class="group tui-space_bottom-5">
+        <div>
+            <tui-input-number class="tui-group__inherit-item"
+                              formControlName="systolicValue">
+                Systolic
+            </tui-input-number>
+            <tui-field-error formControlName="systolicValue"></tui-field-error>
+        </div>
+        <div>
+            <tui-input-number class="tui-group__inherit-item"
+                              formControlName="diastolicValue">
+                Diastolic
+            </tui-input-number>
+            <tui-field-error formControlName="diastolicValue"></tui-field-error>
+        </div>
+        <div>
+            <tui-input-number class="tui-group__inherit-item"
+                              formControlName="pulseRate">
+                Pulse
+            </tui-input-number>
+            <tui-field-error formControlName="pulseRate"></tui-field-error>
+        </div>
+    </div>
+
+    <tui-input-date-time class="tui-space_bottom-5"
+                         formControlName="measuredAt">
+        Choose date and time
+    </tui-input-date-time>
+
+    <tui-combo-box class="b-form tui-space_bottom-5"
+                   tuiTextfieldExampleText="Type a name"
+                   formControlName="armSide">
+        Armside
+        <tui-data-list-wrapper *tuiDataList
+                               [items]="armSides"></tui-data-list-wrapper>
+    </tui-combo-box>
+
+    <tui-text-area class="tui-space_bottom-5"
+                   formControlName="comment">Comment</tui-text-area>
+
+    <button tuiButton
+            type="button"
+            class="tui-space_right-3 tui-space_bottom-3"
+            size="l"
+            [disabled]="bloodpressureForm.invalid || isLoading"
+            [showLoader]="isLoading"
+            (click)="submit()">
+        Submit
+    </button>
+
+</form>

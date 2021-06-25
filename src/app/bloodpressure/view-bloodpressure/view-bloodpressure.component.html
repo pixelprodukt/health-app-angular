@@ -1,0 +1,43 @@
+<div class="tui-row tui-row_adaptive tui-space_bottom-5">
+
+    <div class="tui-col_lg-4 tui-col_md-4 tui-col_sm-6 tui-col_s-6 tui-col_xs-12">
+        <app-bloodpressure-form></app-bloodpressure-form>
+    </div>
+
+    <div class="tui-col_lg-8 tui-col_md-8 tui-col_sm-6 tui-col_s-6 tui-col_xs-12">
+        <app-bloodpressure-values></app-bloodpressure-values>
+    </div>
+
+</div>
+
+<div>
+    <app-bloodpressure-chart></app-bloodpressure-chart>
+</div>
+
+
+<!-- <div class="tui-row tui-row_adaptive"
+     *ngIf="currentPage">
+
+    <div class="tui-col_lg-4 tui-col_md-4 tui-col_sm-6 tui-col_s-6 tui-col_xs-12"
+         *ngFor="let bloodpressure of currentPage?.content">
+
+        <tui-island class="tui-space_bottom-5"
+                    size="l">
+
+            <p class="tui-island__category">{{ bloodpressure.measuredAt }}</p>
+
+            <div class="tui-island__content">
+                <figure class="tui-island__figure">
+                    <div class="some-figure"></div>
+                </figure>
+                <div>
+                    <div class="tui-island__title">{{ getPressureAndPulseValuesFormatted(bloodpressure) }}</div>
+                    <p>{{ bloodpressure.comment }}</p>
+                </div>
+            </div>
+
+        </tui-island>
+
+    </div>
+
+</div> -->
