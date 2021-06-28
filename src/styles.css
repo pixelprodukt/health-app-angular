@@ -15,3 +15,18 @@
     width: 100%;
     color: #bc71c9;
 }
+/* .axes {
+    height: 200px;
+    width: 400px;
+} */
+
+.chart {
+    position: absolute;
+    color: #ffb74c;
+}
+.chart:first-child {
+    color: #bc71c9;
+}
+.chart:last-child {
+    color: #4dc3f7;
+}

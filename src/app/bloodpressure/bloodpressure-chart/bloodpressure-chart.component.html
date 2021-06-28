@@ -33,25 +33,57 @@
 
         </div>
 
-        <div>
+        <div class="tui-row tui-row_adaptive tui-space_bottom-5">
 
-            <tui-loader [showLoader]="isLoading"
-                        [overlay]="true">
+            <div class="tui-col_lg-8 tui-col_md-8 tui-col_sm-8 tui-col_s-8 tui-col_xs-8">
 
-                <tui-axes class="axes"
-                          [verticalLines]="labels.length"
-                          [horizontalLines]="4"
-                          [axisXLabels]="labels">
-                    <tui-line-chart [x]="0"
-                                    [y]="0"
-                                    [width]="400"
-                                    [height]="200"
-                                    [dots]="false"
-                                    [value]="value"
-                                    [yStringify]="stringify"></tui-line-chart>
-                </tui-axes>
+                <tui-loader [showLoader]="isLoading"
+                            [overlay]="true">
 
-            </tui-loader>
+                    <tui-axes class="axes"
+                              [verticalLines]="0"
+                              [horizontalLines]="10"
+                              [axisYLabels]="yAxisLabels">
+                        <tui-line-chart *ngFor="let value of chartValues"
+                                        class="chart"
+                                        [x]="0"
+                                        [y]="0"
+                                        [width]="400"
+                                        [height]="200"
+                                        [dots]="false"
+                                        [value]="value"></tui-line-chart>
+                    </tui-axes>
+
+                </tui-loader>
+
+            </div>
+
+            <div class="tui-col_lg-4 tui-col_md-4 tui-col_sm-4 tui-col_s-4 tui-col_xs-4">
+
+                <tui-island class="tui-space_bottom-5"
+                            size="l">
+
+                    <p class="tui-island__category">Average</p>
+
+                    <div class="tui-island__content">
+
+                        <div>
+                            <div class="tui-island__title">Titel</div>
+
+                            <div>systolic</div>
+                            <div>{{ average.systolic | number : '1.0-0'}}</div>
+                            <div>diastolic</div>
+                            <div>{{ average.diastolic | number : '1.0-0' }}</div>
+                            <div>pulse</div>
+                            <div>{{ average.pulse | number : '1.0-0' }}</div>
+                        </div>
+                    </div>
+
+                </tui-island>
+
+
+
+            </div>
 
         </div>
 
