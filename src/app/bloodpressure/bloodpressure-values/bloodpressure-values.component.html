@@ -9,14 +9,18 @@
 
             <p class="tui-island__category">{{ bloodpressure.measuredAt | date }}</p>
 
-            <div class="tui-island__content">
-                <figure class="tui-island__figure">
-                    <div class="some-figure"></div>
-                </figure>
+            <div class="d-flex flex-align-items-center">
+
                 <div>
-                    <div class="tui-island__title">{{ getPressureAndPulseValuesFormatted(bloodpressure) }}</div>
-                    <p>{{ bloodpressure.comment }}</p>
+                    <div class="tui-island__title m-0">{{ getPressureAndPulseValuesFormatted(bloodpressure) }}</div> 
                 </div>
+
+                <div class="bp-indicator-bubble bp-green-bg ml-auto" [ngClass]="getBubbleColor(bloodpressure)">{{ bloodpressure.armSide }}</div>
+
+            </div>
+
+            <div>
+                <p>{{ bloodpressure.comment }} sdfgsdfgds fgdshg dsfh sdhd ashdsh</p>
             </div>
 
         </tui-island>
@@ -26,7 +30,6 @@
 </div>
 
 <tui-pagination *ngIf="currentPage"
-    [length]="currentPage!.totalPages"
-    [index]="currentPage.number"
-    (indexChange)="goToPage($event)"
-></tui-pagination>
+                [length]="currentPage!.totalPages"
+                [index]="currentPage.number"
+                (indexChange)="goToPage($event)"></tui-pagination>

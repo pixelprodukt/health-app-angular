@@ -30,3 +30,63 @@
 .chart:last-child {
     color: #4dc3f7;
 }
+
+.bp-lightgreen-bg {
+    background-color: rgb(121, 241, 105);
+}
+
+.bp-green-bg {
+    background-color: rgb(84, 197, 69);
+}
+
+.bp-lightyellow-bg {
+    background-color: rgb(247, 234, 58);
+}
+
+.bp-yellow-bg {
+    background-color: rgb(212, 198, 0);
+}
+
+.bp-red-bg {
+    background-color: rgb(212, 78, 0);
+}
+
+.bp-indicator-bubble {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.d-flex {
+    display: flex;
+    align-content: space-between;
+}
+
+.flex-align-items-center {
+    align-items: center;
+}
+
+.m-0 {
+    margin: 0 !important;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+.mr-auto {
+    margin-right: auto;
+}
+
+.mt-auto {
+    margin-top: auto;
+}
+
+.mb-auto {
+    margin-bottom: auto;
+}

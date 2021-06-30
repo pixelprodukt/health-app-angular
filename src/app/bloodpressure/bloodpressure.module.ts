@@ -4,7 +4,7 @@ import { ViewBloodpressureComponent } from './view-bloodpressure/view-bloodpress
 import { bloodpressureRoutes } from './bloodpressure.routing';
 import { AuthenticationRouteGuard } from '../authentication/shared/authentication-route-guard';
 import { TuiButtonModule, TuiDataListModule, TuiGroupModule, TuiLoaderModule, TuiTableModeModule } from '@taiga-ui/core';
-import { TuiComboBoxModule, TuiDataListWrapperModule, TuiFieldErrorModule, TuiFilterByInputPipeModule, TuiInputDateRangeModule, TuiInputDateTimeModule, TuiInputModule, TuiInputNumberModule, TuiIslandModule, TuiPaginationModule, TuiTextAreaModule } from '@taiga-ui/kit';
+import { TuiBadgeModule, TuiComboBoxModule, TuiDataListWrapperModule, TuiFieldErrorModule, TuiFilterByInputPipeModule, TuiInputDateRangeModule, TuiInputDateTimeModule, TuiInputModule, TuiInputNumberModule, TuiIslandModule, TuiPaginationModule, TuiTextAreaModule } from '@taiga-ui/kit';
 import { BloodpressureFormComponent } from './bloodpressure-form/bloodpressure-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
