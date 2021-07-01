@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TuiDay, TuiTime } from '@taiga-ui/cdk';
 import { BloodpressureData } from '../shared/bloodpressure-data';
@@ -10,6 +10,8 @@ import { BloodpressureService } from '../shared/bloodpressure.service';
     styleUrls: ['./bloodpressure-form.component.css']
 })
 export class BloodpressureFormComponent implements OnInit {
+
+    @Output() formWasSubmitted = new EventEmitter<BloodpressureData>();
 
     private _isLoading = false;
     private _bloodpressureForm: FormGroup = this.getInitialFormGroup();
@@ -23,7 +25,7 @@ export class BloodpressureFormComponent implements OnInit {
 
     submit(): void {
 
-        if (this._bloodpressureForm.valid) {
+        if (this._bloodpressureForm.valid && this._bloodpressureForm.dirty) {
 
             this._isLoading = true;
 
@@ -41,6 +43,7 @@ export class BloodpressureFormComponent implements OnInit {
                 this._isLoading = false;
                 this._bloodpressureForm.enable();
                 this._bloodpressureForm = this.getInitialFormGroup();
+                this.formWasSubmitted.emit(bloodpressureData);
             });
         }
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Page } from 'src/app/shared/page';
 import { BLoodpressureClassifications } from '../shared/bloodpressure-classifications';
 import { BloodpressureData } from '../shared/bloodpressure-data';
@@ -12,37 +12,43 @@ import { ValueClassification } from '../shared/value-classification';
 })
 export class BloodpressureValuesComponent implements OnInit {
 
+    @Input() triggerReloading: BloodpressureData | null = null;
+
     private readonly PAGESIZE = 9;
 
     pageNumber = 0;
     currentPage: Page<BloodpressureData> | null = null;
 
     systolicValueClassification: ValueClassification = {
-        optimal: 120,
         normal: 130,
         highNormal: 140,
-        hypertensionOne: 160,
-        hypertensionTwo: 180
+        hypertensionOne: 160
     }
 
     diastolicValueClassification: ValueClassification = {
-        optimal: 80,
         normal: 85,
         highNormal: 90,
-        hypertensionOne: 100,
-        hypertensionTwo: 110
+        hypertensionOne: 100
     }
 
     constructor(private bloodpressureService: BloodpressureService) { }
 
     ngOnInit(): void {
-        this.bloodpressureService.getPage({ page: this.pageNumber, size: this.PAGESIZE }).subscribe(response => {
-            this.currentPage = response;
-        });
+        this.getPageReqeust();
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes) {
+            this.getPageReqeust();
+        }
     }
 
     goToPage(index: number): void {
         this.pageNumber = index;
+        this.getPageReqeust();
+    }
+
+    private getPageReqeust() {
         this.bloodpressureService.getPage({ page: this.pageNumber, size: this.PAGESIZE }).subscribe(response => {
             this.currentPage = response;
         });
@@ -55,29 +61,31 @@ export class BloodpressureValuesComponent implements OnInit {
     getBubbleColor(bloodpressure: BloodpressureData): string {
 
         let systolicResult = this.getClassification(bloodpressure.systolicValue, this.systolicValueClassification);
-        let diastolicResult = this.getClassification(bloodpressure.diastolicValue, this.systolicValueClassification);
+        let diastolicResult = this.getClassification(bloodpressure.diastolicValue, this.diastolicValueClassification);
 
-        switch (systolicResult) {
-            case BLoodpressureClassifications.OPTIMAL: return 'bp-lightgreen-bg';
-            case BLoodpressureClassifications.NORMAL: return 'bp-green-bg';
-            case BLoodpressureClassifications.HIGH_NORMAL: return 'bp-lightyellow-bg';
-            case BLoodpressureClassifications.HYPERTENSION_ONE: return 'bp-yellow-bg';
-            default: return 'bp-red-bg';
+        if (systolicResult === diastolicResult) {
+            return systolicResult.toString();
         }
+        if (systolicResult === BLoodpressureClassifications.NORMAL && diastolicResult === BLoodpressureClassifications.HIGH_NORMAL) {
+            return BLoodpressureClassifications.HIGH_NORMAL.toString();
+        }
+        if (systolicResult === BLoodpressureClassifications.HIGH_NORMAL && diastolicResult === BLoodpressureClassifications.NORMAL) {
+            return BLoodpressureClassifications.NORMAL.toString();
+        }
+        if (systolicResult === BLoodpressureClassifications.HYPERTENSION_ONE || diastolicResult === BLoodpressureClassifications.HYPERTENSION_ONE) {
+            return BLoodpressureClassifications.HYPERTENSION_ONE.toString();
+        }
+        return 'bp-default-bg';
     }
 
-    getClassification(value: number, classificationScala: ValueClassification): BLoodpressureClassifications {
-        if (value <= classificationScala.optimal) {
-            return BLoodpressureClassifications.OPTIMAL;
-        } else if (value <= classificationScala.normal) {
+    private getClassification(value: number, classificationScala: ValueClassification): BLoodpressureClassifications {
+        if (value < classificationScala.normal) {
             return BLoodpressureClassifications.NORMAL;
-        } else if (value <= classificationScala.highNormal) {
-            return BLoodpressureClassifications.HIGH_NORMAL;
-        } else if (value <= classificationScala.hypertensionOne) {
-            return BLoodpressureClassifications.HYPERTENSION_ONE;
-        } else {
-            return BLoodpressureClassifications.HYPERTENSION_TWO;
         }
+        if (value < classificationScala.highNormal) {
+            return BLoodpressureClassifications.HIGH_NORMAL;
+        }
+        return BLoodpressureClassifications.HYPERTENSION_ONE;
     }
 
 }

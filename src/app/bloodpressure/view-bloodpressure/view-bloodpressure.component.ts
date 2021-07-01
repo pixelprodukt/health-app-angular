@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BloodpressureData } from '../shared/bloodpressure-data';
 
 @Component({
     selector: 'app-view-bloodpressure',
@@ -7,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewBloodpressureComponent implements OnInit {
 
+    reloadValues: BloodpressureData | null = null;
+
     constructor() { }
 
     ngOnInit(): void {
+    }
+
+    triggerReloadForValues(event: BloodpressureData) {
+        this.reloadValues = event;
     }
 }

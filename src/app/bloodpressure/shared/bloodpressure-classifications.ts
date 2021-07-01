@@ -1,7 +1,5 @@
 export enum BLoodpressureClassifications {
-    OPTIMAL,
-    NORMAL,
-    HIGH_NORMAL,
-    HYPERTENSION_ONE,
-    HYPERTENSION_TWO
+    NORMAL = 'bp-green-bg',
+    HIGH_NORMAL = 'bp-orange-bg',
+    HYPERTENSION_ONE = 'bp-red-bg'
 }
