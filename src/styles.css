@@ -67,6 +67,10 @@
     align-items: center;
 }
 
+.flex-justifiy-content-between {
+    justify-content: space-between;
+}
+
 .m-0 {
     margin: 0 !important;
 }
@@ -85,4 +89,12 @@
 
 .mb-auto {
     margin-bottom: auto;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+tui-svg {
+    color: var(--tui-text-02) !important;
 }

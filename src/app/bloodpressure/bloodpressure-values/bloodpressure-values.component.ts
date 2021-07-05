@@ -14,6 +14,8 @@ export class BloodpressureValuesComponent implements OnInit {
 
     @Input() triggerReloading: BloodpressureData | null = null;
 
+    isLoading = false;
+
     private readonly PAGESIZE = 9;
 
     pageNumber = 0;
@@ -34,23 +36,32 @@ export class BloodpressureValuesComponent implements OnInit {
     constructor(private bloodpressureService: BloodpressureService) { }
 
     ngOnInit(): void {
-        this.getPageReqeust();
+        this.getPageRequest();
     }
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes) {
-            this.getPageReqeust();
+            this.getPageRequest();
         }
     }
 
     goToPage(index: number): void {
         this.pageNumber = index;
-        this.getPageReqeust();
+        this.getPageRequest();
     }
 
-    private getPageReqeust() {
+    private getPageRequest() {
+        this.isLoading = true;
         this.bloodpressureService.getPage({ page: this.pageNumber, size: this.PAGESIZE }).subscribe(response => {
             this.currentPage = response;
+            this.isLoading = false;
+        });
+    }
+
+    deleteBloodpressure(id: number) {
+        this.isLoading = true;
+        this.bloodpressureService.deleteBloodpressure(id).subscribe(response => {
+            this.getPageRequest();
         });
     }
 

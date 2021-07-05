@@ -25,4 +25,8 @@ export class BloodpressureService {
     getAllByDateRange(dateRange: DateRangeRequestData): Observable<BloodpressureData[]> {
         return this.http.post<BloodpressureData[]>(URL.BLOODPRESSURE_DATERANGE, dateRange);
     }
+
+    deleteBloodpressure(id: number): Observable<any> {
+        return this.http.delete<BloodpressureData>(`${URL.BLOODPRESSURE}/${id}`);
+    }
 }
