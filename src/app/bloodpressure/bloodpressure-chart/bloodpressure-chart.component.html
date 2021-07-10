@@ -61,23 +61,28 @@
 
             <div class="tui-col_lg-4 tui-col_md-4 tui-col_sm-4 tui-col_s-4 tui-col_xs-4">
 
-                <tui-island class="tui-space_bottom-5"
-                            size="l">
+                <tui-island *ngIf="average.systolic && average.diastolic" class="tui-space_bottom-5"
+                            size="s">
 
-                    <p class="tui-island__category">Average</p>
+                    <h3 class="pl-2 m-0">Average</h3>
 
-                    <div class="tui-island__content">
+                    <div class="d-flex">
 
-                        <div>
-                            <div class="tui-island__title">Titel</div>
-
-                            <div>systole</div>
-                            <div>{{ average.systolic | number : '1.0-0'}}</div>
-                            <div>diastole</div>
-                            <div>{{ average.diastolic | number : '1.0-0' }}</div>
-                            <div>pulse</div>
-                            <div>{{ average.pulse | number : '1.0-0' }}</div>
+                        <div class="text-center p-2">
+                            <div class="mb-1">systole</div>
+                            <h1 class="text-systole m-0">{{ average.systolic | number : '1.0-0'}}</h1>
                         </div>
+
+                        <div class="text-center p-2">
+                            <div class="mb-1">diastole</div>
+                            <h1 class="text-diastole m-0">{{ average.diastolic | number : '1.0-0' }}</h1>
+                        </div>
+
+                        <div class="text-center p-2">
+                            <div class="mb-1">pulse</div>
+                            <h1 class="text-pulse m-0">{{ average.pulse | number : '1.0-0' }}</h1>
+                        </div>
+
                     </div>
 
                 </tui-island>
