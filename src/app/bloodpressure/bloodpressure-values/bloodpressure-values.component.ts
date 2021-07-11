@@ -1,9 +1,12 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Inject, Injector, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Page } from 'src/app/shared/page';
 import { BLoodpressureClassifications } from '../shared/bloodpressure-classifications';
 import { BloodpressureData } from '../shared/bloodpressure-data';
 import { BloodpressureService } from '../shared/bloodpressure.service';
 import { ValueClassification } from '../shared/value-classification';
+import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
+import { TuiDialogOptions, TuiDialogService, TuiNotificationsService } from '@taiga-ui/core';
+import { ConfirmationModalComponent } from 'src/app/modals/confirmation-modal/confirmation-modal.component';
 
 @Component({
     selector: 'app-bloodpressure-values',
@@ -33,7 +36,12 @@ export class BloodpressureValuesComponent implements OnInit {
         hypertensionOne: 100
     }
 
-    constructor(private bloodpressureService: BloodpressureService) { }
+    constructor(
+        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+        @Inject(Injector) private readonly injector: Injector,
+        @Inject(TuiNotificationsService) private readonly notificationsService: TuiNotificationsService,
+        private bloodpressureService: BloodpressureService
+    ) { }
 
     ngOnInit(): void {
         this.getPageRequest();
@@ -50,7 +58,7 @@ export class BloodpressureValuesComponent implements OnInit {
         this.getPageRequest();
     }
 
-    private getPageRequest() {
+    private getPageRequest(): void {
         this.isLoading = true;
         this.bloodpressureService.getPage({ page: this.pageNumber, size: this.PAGESIZE }).subscribe(response => {
             this.currentPage = response;
@@ -58,7 +66,22 @@ export class BloodpressureValuesComponent implements OnInit {
         });
     }
 
-    deleteBloodpressure(id: number) {
+    openConfirmationModal(id: number): void {
+
+        const modalOptions: Partial<TuiDialogOptions<any>> = { data: id, label: 'Confirm', dismissible: true };
+
+        this.dialogService.open(new PolymorpheusComponent(ConfirmationModalComponent, this.injector), modalOptions).subscribe({
+            next: data => {
+                if (data !== null) {
+                    this.deleteBloodpressure(data as number);
+                    this.notificationsService.show('Values were deleted.').subscribe();
+                }
+            },
+            complete: () => { },
+        });
+    }
+
+    deleteBloodpressure(id: number): void {
         this.isLoading = true;
         this.bloodpressureService.deleteBloodpressure(id).subscribe(response => {
             this.getPageRequest();
