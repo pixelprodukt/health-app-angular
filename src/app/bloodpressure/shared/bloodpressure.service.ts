@@ -5,7 +5,7 @@ import { Page } from 'src/app/shared/page';
 import { URL } from 'src/app/shared/url';
 import { BloodpressureData } from './bloodpressure-data';
 import { DateRangeRequestData } from './date-range-request-data';
-import { PageRequestData } from './page-request.data';
+import { PageRequestData } from '../../shared/page-request.data';
 
 @Injectable({
     providedIn: 'root'

@@ -5,6 +5,7 @@ import { dahsboardRoutes } from './dashboard.routing';
 import { TuiTabsModule } from '@taiga-ui/kit';
 import { RouterModule } from '@angular/router';
 import { BloodpressureModule } from '../bloodpressure/bloodpressure.module';
+import { AllergiesModule } from '../allergies/allergies.module';
 
 
 
@@ -16,6 +17,7 @@ import { BloodpressureModule } from '../bloodpressure/bloodpressure.module';
     CommonModule,
     RouterModule,
     BloodpressureModule,
+    AllergiesModule,
     TuiTabsModule,
     dahsboardRoutes
   ]

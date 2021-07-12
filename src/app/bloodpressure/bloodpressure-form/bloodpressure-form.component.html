@@ -1,3 +1,5 @@
+<h2>Please fill in the fields</h2>
+
 <form class="input-wrapper"
       [formGroup]="bloodpressureForm"
       (ngSubmit)="submit()"
@@ -50,7 +52,7 @@
             size="l"
             [disabled]="bloodpressureForm.invalid || bloodpressureForm.pristine || isLoading"
             [showLoader]="isLoading">
-        Submit new entry
+        Add data
     </button>
 
 </form>

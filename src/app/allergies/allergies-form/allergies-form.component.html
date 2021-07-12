@@ -1,0 +1,25 @@
+<h2>Allergy and reaction</h2>
+
+<form class="input-wrapper"
+      [formGroup]="allergiesForm"
+      (ngSubmit)="submit()"
+      novalidate>
+
+    <tui-input class="b-form tui-space_bottom-5"
+               formControlName="description">
+        Description
+    </tui-input>
+
+    <tui-text-area class="tui-space_bottom-5"
+                   formControlName="reaction">Reaction</tui-text-area>
+
+    <button tuiButton
+            type="submit"
+            class="tui-space_right-3 tui-space_bottom-3"
+            size="l"
+            [disabled]="allergiesForm.invalid || allergiesForm.pristine || isLoading"
+            [showLoader]="isLoading">
+        Add allergy
+    </button>
+
+</form>

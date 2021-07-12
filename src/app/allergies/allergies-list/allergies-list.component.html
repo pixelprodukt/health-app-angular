@@ -1,0 +1,12 @@
+<tui-loader [showLoader]="isLoading"
+            [overlay]="true">
+
+    <div *ngIf="currentPage">
+
+        <div *ngFor="let allergy of currentPage.content">
+            {{allergy | json }}
+        </div>
+
+    </div>
+    
+</tui-loader>
