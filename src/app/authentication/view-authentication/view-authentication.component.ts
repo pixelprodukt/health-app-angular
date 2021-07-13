@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/shared/token.service';
@@ -9,16 +9,14 @@ import { SignInRequestData } from '../shared/sign-in-request-data';
     selector: 'app-view-authentication',
     templateUrl: './view-authentication.component.html',
     styleUrls: ['./view-authentication.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ViewAuthenticationComponent implements OnInit {
 
     private _isLoading = false;
     private _showSignInError = false;
 
-    private _loginForm: FormGroup = new FormGroup({
-        nameOrEmail: new FormControl('', [Validators.required, Validators.minLength(4)]),
-        password: new FormControl('', [Validators.required, Validators.minLength(4)])
-    });
+    private _loginForm: FormGroup = this.getInitialForm();
 
     constructor(private authService: AuthenticationService, private tokenService: TokenService, private router: Router) { }
 
@@ -38,12 +36,12 @@ export class ViewAuthenticationComponent implements OnInit {
 
             if (response.jwt && response.tokenType === 'Bearer') {
                 this.tokenService.setToken(response.jwt);
-                this._resetForm();
+                this._loginForm = this.getInitialForm();
                 this._isLoading = false;
-                this._loginForm.enable();
+                //this._loginForm.enable();
                 this.router.navigate(['/dashboard/bloodpressure']);
             } else if (!response.jwt) {
-                this._resetForm();
+                this._loginForm = this.getInitialForm();
                 this._showSignInError = true;
                 this._isLoading = false;
                 this._loginForm.enable();
@@ -51,9 +49,11 @@ export class ViewAuthenticationComponent implements OnInit {
         });
     }
 
-    private _resetForm() {
-        this._loginForm.get('nameOrEmail')?.patchValue('');
-        this._loginForm.get('password')?.patchValue('');
+    private getInitialForm() {
+        return new FormGroup({
+            nameOrEmail: new FormControl('', [Validators.required, Validators.minLength(4)]),
+            password: new FormControl('', [Validators.required, Validators.minLength(4)])
+        });
     }
 
     get loginForm(): FormGroup {
