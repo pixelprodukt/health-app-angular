@@ -1,12 +1,33 @@
+<h2>Allergies</h2>
+
 <tui-loader [showLoader]="isLoading"
             [overlay]="true">
 
     <div *ngIf="currentPage">
 
         <div *ngFor="let allergy of currentPage.content">
-            {{allergy | json }}
+
+            <tui-island class="tui-space_bottom-5"
+                        size="l">
+
+                <div class="tui-island__category">{{allergy.description}}</div>
+
+                <p class="tui-island__paragraph">{{allergy.reaction}}</p>
+
+                <div class="d-flex">
+                    <button tuiIconButton
+                            class="ml-auto"
+                            size="s"
+                            appearance="secondary"
+                            shape="rounded"
+                            icon="tuiIconTrash"
+                            (click)="openConfirmationModal(allergy.id)"></button>
+                </div>
+
+            </tui-island>
+
         </div>
 
     </div>
-    
+
 </tui-loader>

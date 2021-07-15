@@ -46,7 +46,6 @@ import { ModalsModule } from '../modals/modals.module';
         TuiLineChartModule,
         TuiLoaderModule,
         TuiPaginationModule,
-        TuiSvgModule,
         ModalsModule,
         bloodpressureRoutes
     ],

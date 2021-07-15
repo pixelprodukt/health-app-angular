@@ -6,8 +6,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { TuiButtonModule, TuiLoaderModule } from '@taiga-ui/core';
-import { TuiFieldErrorModule, TuiInputModule, TuiTextAreaModule } from '@taiga-ui/kit';
+import { TuiFieldErrorModule, TuiInputModule, TuiIslandModule, TuiTextAreaModule } from '@taiga-ui/kit';
 import { AllergiesListComponent } from './allergies-list/allergies-list.component';
+import { ModalsModule } from '../modals/modals.module';
 
 
 
@@ -27,7 +28,9 @@ import { AllergiesListComponent } from './allergies-list/allergies-list.componen
         TuiInputModule,
         TuiTextAreaModule,
         TuiFieldErrorModule,
-        TuiLoaderModule
+        TuiLoaderModule,
+        TuiIslandModule,
+        ModalsModule
     ]
 })
 export class AllergiesModule { }

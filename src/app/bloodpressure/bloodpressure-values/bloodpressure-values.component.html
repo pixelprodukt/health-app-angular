@@ -31,11 +31,14 @@
                 </div>
 
                 <div class="d-flex">
-                    <tui-svg class="pointer ml-auto"
-                             src="tuiIconTrash"
-                             (click)="openConfirmationModal(bloodpressure.id)"></tui-svg>
+                    <button tuiIconButton
+                            class="ml-auto"
+                            size="s"
+                            appearance="secondary"
+                            shape="rounded"
+                            icon="tuiIconTrash"
+                            (click)="openConfirmationModal(bloodpressure.id)"></button>
                 </div>
-
 
             </tui-island>
 

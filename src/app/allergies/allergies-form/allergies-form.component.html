@@ -13,13 +13,14 @@
     <tui-text-area class="tui-space_bottom-5"
                    formControlName="reaction">Reaction</tui-text-area>
 
-    <button tuiButton
+    <button tuiIconButton
             type="submit"
             class="tui-space_right-3 tui-space_bottom-3"
             size="l"
+            appearance="primary"
+            shape="rounded"
+            icon="tuiIconPlusLarge"
             [disabled]="allergiesForm.invalid || allergiesForm.pristine || isLoading"
-            [showLoader]="isLoading">
-        Add allergy
-    </button>
+            [showLoader]="isLoading"></button>
 
 </form>
