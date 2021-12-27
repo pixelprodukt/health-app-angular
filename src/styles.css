@@ -127,6 +127,31 @@
     cursor: pointer;
 }
 
-/* tui-svg {
-    color: var(--tui-text-02) !important;
-} */
+
+/** 
+        medication plan
+**/	
+.number {
+    text-align: right;
+    flex-direction: row-reverse;
+}
+ 
+.first {
+    min-width: 11.25rem;
+}
+ 
+.second {
+    left: 11.375rem;
+}
+
+.border {
+    border-left: none;
+}
+ 
+.select {
+    width: 6.25rem;
+}
+ 
+.scrollbar {
+    max-height: 18.75rem;
+}

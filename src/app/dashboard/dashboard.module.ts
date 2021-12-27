@@ -6,20 +6,22 @@ import { TuiTabsModule } from '@taiga-ui/kit';
 import { RouterModule } from '@angular/router';
 import { BloodpressureModule } from '../bloodpressure/bloodpressure.module';
 import { AllergiesModule } from '../allergies/allergies.module';
+import { MedicationPlanModule } from '../medication-plan/medication-plan.module';
 
 
 
 @NgModule({
-  declarations: [
-    ViewDashboardComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    BloodpressureModule,
-    AllergiesModule,
-    TuiTabsModule,
-    dahsboardRoutes
-  ]
+    declarations: [
+        ViewDashboardComponent
+    ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        BloodpressureModule,
+        AllergiesModule,
+        MedicationPlanModule,
+        TuiTabsModule,
+        dahsboardRoutes
+    ]
 })
 export class DashboardModule { }

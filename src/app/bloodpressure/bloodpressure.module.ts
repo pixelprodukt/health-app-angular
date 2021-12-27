@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewBloodpressureComponent } from './view-bloodpressure/view-bloodpressure.component';
-import { bloodpressureRoutes } from './bloodpressure.routing';
 import { AuthenticationRouteGuard } from '../authentication/shared/authentication-route-guard';
 import { TuiButtonModule, TuiDataListModule, TuiGroupModule, TuiLoaderModule, TuiNotificationsModule, TuiSvgModule, TuiTableModeModule } from '@taiga-ui/core';
 import { TuiComboBoxModule, TuiDataListWrapperModule, TuiFieldErrorModule, TuiFilterByInputPipeModule, TuiInputDateRangeModule, TuiInputDateTimeModule, TuiInputModule, TuiInputNumberModule, TuiIslandModule, TuiMarkerIconModule, TuiPaginationModule, TuiTextAreaModule } from '@taiga-ui/kit';
@@ -12,7 +11,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BloodpressureChartComponent } from './bloodpressure-chart/bloodpressure-chart.component';
 import { TuiAxesModule, TuiLineChartModule } from '@taiga-ui/addon-charts';
 import { BloodpressureValuesComponent } from './bloodpressure-values/bloodpressure-values.component';
-import { tuiIconSearch } from '@taiga-ui/icons';
 import { ModalsModule } from '../modals/modals.module';
 
 
@@ -46,8 +44,7 @@ import { ModalsModule } from '../modals/modals.module';
         TuiLineChartModule,
         TuiLoaderModule,
         TuiPaginationModule,
-        ModalsModule,
-        bloodpressureRoutes
+        ModalsModule
     ],
     providers: [AuthenticationRouteGuard]
 })

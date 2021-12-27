@@ -1,0 +1,116 @@
+<p i18n>
+    <code>tuiTableMode</code> directive from
+    <code>TuiTableModeModule</code>
+</p>
+
+<form tuiTableMode [formGroup]="form">
+    <table class="tui-table table">
+        <thead>
+            <tr>
+                <th class="tui-table__th cell_name">Name</th>
+                <th class="tui-table__th cell_date">Date</th>
+                <th class="tui-table__th cell_gender">Gender</th>
+                <th class="tui-table__th cell_quantity">Quantity</th>
+                <th class="tui-table__th cell_sum">Sum, $</th>
+            </tr>
+        </thead>
+    </table>
+    <div class="table">
+        <div tuiGroup class="row" [collapsed]="true">
+            <tui-input
+                class="cell cell_name"
+                tuiTextfieldSize="m"
+                tuiTextfieldExampleText="Ivan Ivanov"
+                formControlName="name"
+                tuiTextfieldLabelOutside="true"
+            >
+                Name
+            </tui-input>
+            <tui-input-date
+                class="cell cell_date"
+                tuiTextfieldSize="m"
+                formControlName="date"
+                tuiTextfieldLabelOutside="true"
+            >
+                Date
+            </tui-input-date>
+            <tui-select
+                class="cell cell_color"
+                formControlName="color"
+                tuiTextfieldSize="m"
+                tuiTextfieldLabelOutside="true"
+            >
+                Color
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    [items]="items"
+                ></tui-data-list-wrapper>
+            </tui-select>
+            <tui-input-count
+                class="cell cell_quantity"
+                tuiTextfieldSize="m"
+                formControlName="quantity"
+                tuiTextfieldLabelOutside="true"
+            >
+                Quantity
+            </tui-input-count>
+            <tui-input-number
+                class="cell cell_sum"
+                tuiTextfieldSize="m"
+                formControlName="sum"
+                tuiTextfieldLabelOutside="true"
+                [readOnly]="true"
+            >
+                Sum
+            </tui-input-number>
+        </div>
+        <div tuiGroup class="row" [collapsed]="true">
+            <tui-input
+                class="cell cell_name"
+                tuiTextfieldSize="m"
+                tuiTextfieldExampleText="Ivan Ivanov"
+                formControlName="name"
+                tuiTextfieldLabelOutside="true"
+            >
+                Name
+            </tui-input>
+            <tui-input-date
+                class="cell cell_date"
+                tuiTextfieldSize="m"
+                formControlName="date"
+                tuiTextfieldLabelOutside="true"
+            >
+                Date
+            </tui-input-date>
+            <tui-select
+                class="cell cell_color"
+                formControlName="color"
+                tuiTextfieldSize="m"
+                tuiTextfieldLabelOutside="true"
+            >
+                Color
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    [items]="items"
+                ></tui-data-list-wrapper>
+            </tui-select>
+            <tui-input-count
+                class="cell cell_quantity"
+                tuiTextfieldSize="m"
+                formControlName="quantity"
+                tuiTextfieldLabelOutside="true"
+            >
+                Quantity
+            </tui-input-count>
+            <tui-input-number
+                class="cell cell_sum"
+                tuiTextfieldSize="m"
+                formControlName="sum"
+                tuiTextfieldLabelOutside="true"
+                [readOnly]="true"
+            >
+                Sum
+            </tui-input-number>
+        </div>
+    </div>
+</form>

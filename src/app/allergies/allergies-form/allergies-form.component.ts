@@ -31,7 +31,6 @@ export class AllergiesFormComponent implements OnInit {
             const allergiesData = this._allergyForm.value;
 
             this.allergiesService.postAllergy(allergiesData).subscribe(response => {
-                console.log(response);
                 this.isLoading = false;
                 this._allergyForm.enable();
                 this._allergyForm = this.getInitialFormGroup();

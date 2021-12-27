@@ -65,8 +65,6 @@ export class AllergiesListComponent implements OnInit {
         this.isLoading = true;
         this.allergiesSerivce.getPage({ page: this.pageNumber, size: this.PAGESIZE }).subscribe(response => {
             this.currentPage = response;
-            console.log(response);
-
             this.isLoading = false;
         });
     }
